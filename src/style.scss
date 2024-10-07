@@ -1,0 +1,139 @@
+.formo-video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  // overflow: scroll;
+  background-color: rgba(0,0,0,0.6);
+  padding-top: 0!important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+
+  &:after {
+    content: '╳';
+    font-family: var(--wp--preset--font-family--krana);
+    font-size: var(--wp--preset--font-size--x-large);
+    color: var(--wp--preset--color--formo-cream);
+    background-color: var(--wp--preset--color--formo-blue);
+    width: 1.125em;
+    height: 1.125em;
+    padding-top: .1em;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    cursor: pointer;
+  }
+  
+  & .formo-video-popup__title {
+    color: var(--wp--preset--color--formo-cream);
+    font-size: var(--wp--preset--font-size--xx-large);
+    margin-top: 0;
+  }
+  
+  & .formo-video-popup__video {
+    width: auto;
+    height: auto;
+    max-height: 80vh;
+    max-width: 80vw;
+    // overflow: hidden;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:after {
+      content: '▶︎';
+      font-size: var(--wp--preset--font-size--xx-large);
+      background-color: var(--wp--preset--color--formo-blue);
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+      padding: 0 0 0 0.15em;
+      line-height: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--wp--preset--color--formo-cream);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: playBtnIn .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      pointer-events: none;
+      
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    & video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1.2rem;
+    }
+  }
+  &.is-playing .formo-video-popup__video {
+    &:after {
+      animation: playBtnOut .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+  }
+}
+@keyframes playBtnIn {
+  0% {
+    opacity: 0;
+    width: 3em;
+    height: 3em;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    width: 1.5em;
+    height: 1.5em;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes playBtnOut {
+  0% {
+    opacity: 1;
+    width: 1.5em;
+    height: 1.5em;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    width: 3em;
+    height: 3em;
+    transform: translate(-50%, -50%) scale(.5);
+  }
+}
+
+@media (max-width: 480px) {
+  .formo-video-popup {
+
+    &:after {
+      top: 5rem;
+      right: 1rem;
+      font-size: var(--wp--preset--font-size--xxx-large);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+    
+    & .formo-video-popup__video {
+      max-width: calc(100vw - 2em);
+      
+      &:after {
+        content: none;
+      }
+    }
+  }
+}

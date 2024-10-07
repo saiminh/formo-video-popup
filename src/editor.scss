@@ -1,0 +1,22 @@
+.formo-video-popup {
+  position: relative;
+  z-index: 1;
+
+  & .formo-video-popup__video {
+    &::after {
+      content: none!important;
+    }
+  }
+
+  & .explainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--wp--preset--color--formo-peach);
+    color: var(--wp--preset--color--formo-cream);
+    font-size: 1rem;
+    padding: 0.5em;
+    margin: 0;
+    z-index: 2;
+  }
+}

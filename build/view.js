@@ -1,0 +1,1 @@
+document.querySelectorAll(".formo-video-popup").forEach((e=>{const o=e.querySelector(".formo-video-popup__video video");o.addEventListener("play",(()=>{e.classList.add("is-playing")})),o.addEventListener("pause",(()=>{e.classList.remove("is-playing")})),e.addEventListener("click",(o=>{o.target===e&&e.remove()}))}));
