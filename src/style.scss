@@ -43,9 +43,9 @@
   & .formo-video-popup__title {
     position: absolute;
     bottom: calc(50% + .4em);
-    margin: 0 auto;
-    padding: 0 5vw;
-    max-width: calc(80vw - 1em);
+    margin: 0;
+    padding: 0 10.5vw;
+    max-width: 80vw;
     z-index: 3;
     color: var(--wp--preset--color--formo-yellow);
     font-size: calc(1.4 * var(--wp--preset--font-size--xx-large));
@@ -164,8 +164,8 @@
       font-size: var(--wp--preset--font-size--xxx-large);
     }
     & .formo-video-popup__title {
-      max-width: calc(100vw - 3em);
       font-size: 10vw;
+      padding: 0 6vw;
     }
     & .formo-video-popup__video {
       max-width: calc(100vw - 2em);
