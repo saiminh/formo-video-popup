@@ -5,6 +5,8 @@ export default function save() {
 		<div { ...useBlockProps.save({
       className: 'formo-video-popup',
     }) }>
+      <button className="formo-video-popup__close" aria-label="Close video popup">X</button>
+      <button className="formo-video-popup__playbtn" aria-label="Play video">▶︎</button>
 			<InnerBlocks.Content />
 		</div>
 	);

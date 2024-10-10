@@ -8,6 +8,8 @@ export default function Edit() {
       className: 'formo-video-popup',
     }) }>
       <p className="explainer">Video popup block: an overlay covering the full browser window on top of the page.</p>
+      <button className="formo-video-popup__close" aria-label="Close video popup">X</button>
+      <button className="formo-video-popup__playbtn" aria-label="Play video">▶︎</button>
 			<InnerBlocks 
         template={[
           ['core/heading', { placeholder: 'Add a title', level: 1, textAlign: 'center', className: 'formo-video-popup__title' }],

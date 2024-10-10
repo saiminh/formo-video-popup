@@ -4,88 +4,104 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  // overflow: scroll;
   background-color: rgba(0,0,0,0.6);
   padding-top: 0!important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   z-index: 101;
 
-  &:after {
-    content: '╳';
-    font-family: var(--wp--preset--font-family--krana);
-    font-size: var(--wp--preset--font-size--x-large);
-    color: var(--wp--preset--color--formo-cream);
-    background-color: var(--wp--preset--color--formo-blue);
-    width: 1.125em;
-    height: 1.125em;
-    padding-top: .1em;
-    line-height: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+  & .formo-video-popup__close {
+    width: 1em;
+    height: 1em;
     position: absolute;
-    top: 2rem;
-    right: 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    right: calc(10vw - .45em);
+    top: calc(50% - .45em - 22.4999999997vw);
     cursor: pointer;
-  }
-  
-  & .formo-video-popup__title {
-    color: var(--wp--preset--color--formo-cream);
-    font-size: var(--wp--preset--font-size--xx-large);
-    margin-top: 0;
-  }
-  
-  & .formo-video-popup__video {
-    width: auto;
-    height: auto;
-    max-height: 80vh;
-    max-width: 80vw;
-    // overflow: hidden;
-    position: relative;
-
-    &:hover {
-      cursor: pointer;
-    }
+    overflow: hidden;
+    color: rgba(0,0,0,0);
+    background-color: transparent;
+    border: none;
+    font-size: var(--wp--preset--font-size--x-large);
+    z-index: 3;
 
     &:after {
-      content: '▶︎';
-      font-size: var(--wp--preset--font-size--xx-large);
+      content: '';
+      mask-image: url('data:image/svg+xml;utf8,<svg width="171" height="171" viewBox="0 0 171 171" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M170.214 29.1891L141.93 0.904816L85.3613 57.4734L28.7927 0.904816L0.508545 29.1891L57.0771 85.7576L0.508545 142.326L28.793 170.61L85.3613 114.042L141.93 170.61L170.214 142.326L113.646 85.7577L170.214 29.1891Z" fill="black"/></svg>');
+      mask-size: 100%;
       background-color: var(--wp--preset--color--formo-blue);
-      width: 1.5em;
-      height: 1.5em;
-      border-radius: 50%;
-      padding: 0 0 0 0.15em;
+      width: 100%;
+      height: 100%;
+      padding-top: .1em;
       line-height: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: var(--wp--preset--color--formo-cream);
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: playBtnIn .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      pointer-events: none;
-      
-      &:hover {
-        cursor: pointer;
-      }
+      top: 0;
+      left: 0;
+    }
+  }
+  
+  & .formo-video-popup__title {
+    position: absolute;
+    bottom: calc(50% + .4em);
+    margin: 0;
+    padding: 0 5vw;
+    z-index: 3;
+    color: var(--wp--preset--color--formo-yellow);
+    font-size: calc(1.4 * var(--wp--preset--font-size--xx-large));
+    margin-top: 0;
+    width: 100%;
+    pointer-events: none;
+    animation: titleIn .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  &.is-playing .formo-video-popup__title {
+    animation: titleOut .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  & .formo-video-popup__playbtn {
+    font-family: var(--wp--preset--font-family--roobert);
+    font-size: calc(.7 * var(--wp--preset--font-size--xx-large));
+    background-color: var(--wp--preset--color--formo-blue);
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    border: none;
+    padding: 0.05em 0 0 0.25em;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--wp--preset--color--formo-cream);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    animation: playBtnIn .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    pointer-events: none;
+  }
+  &.is-playing .formo-video-popup__playbtn {
+    animation: playBtnOut .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  & .formo-video-popup__video {
+    width: auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 80vh;
+    max-width: 80vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    margin: 0;
+
+    &:hover {
+      cursor: pointer;
     }
     & video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 1.2rem;
-    }
-  }
-  &.is-playing .formo-video-popup__video {
-    &:after {
-      animation: playBtnOut .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
   }
 }
@@ -117,23 +133,41 @@
     transform: translate(-50%, -50%) scale(.5);
   }
 }
+@keyframes titleOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@keyframes titleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1; 
+    transform: translateY(0%);
+  }
+}
 
 @media (max-width: 480px) {
   .formo-video-popup {
 
-    &:after {
-      top: 5rem;
-      right: 1rem;
+    & .formo-video-popup__close {
+      right: calc(5vw - .5em);
+      top: calc(50% - .5em - 25.3124999997vw);
       font-size: var(--wp--preset--font-size--xxx-large);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
-    
+    & .formo-video-popup__title {
+      font-size: 10vw;
+      padding: 0 6vw;
+    }
     & .formo-video-popup__video {
       max-width: calc(100vw - 2em);
-      
-      &:after {
-        content: none;
-      }
     }
   }
 }

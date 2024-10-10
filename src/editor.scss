@@ -2,12 +2,17 @@
   position: relative;
   z-index: 1;
 
-  & .formo-video-popup__video {
-    &::after {
-      content: none!important;
-    }
+  & *:has( > .formo-video-popup__video) {
+    height: 100vh;
   }
-
+  & .formo-video-popup__title {
+    pointer-events: all;
+    width: 100%;
+  }
+  & .formo-video-popup__playbtn ,
+  & .formo-video-popup__close {
+    pointer-events: none;
+  }
   & .explainer {
     position: absolute;
     top: 0;

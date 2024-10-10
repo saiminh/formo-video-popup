@@ -1,4 +1,5 @@
 const fvidpopups = document.querySelectorAll('.formo-video-popup');
+const closebtns = document.querySelectorAll('.formo-video-popup__close');
 
 fvidpopups.forEach((fvidpopup) => {
   const video = fvidpopup.querySelector('.formo-video-popup__video video');
@@ -16,5 +17,10 @@ fvidpopups.forEach((fvidpopup) => {
     if (event.target === fvidpopup) {
       fvidpopup.remove();
     }
+  });
+  closebtns.forEach((closebtn) => {
+    closebtn.addEventListener('click', () => {
+      fvidpopup.remove();
+    });
   });
 })
